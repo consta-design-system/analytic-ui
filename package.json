@@ -78,7 +78,7 @@
   },
   "dependencies": {
     "@bem-react/classname": "^1.5.8",
-    "@consta/uikit": "^1.12.2",
+    "@consta/uikit": "^3.7.0",
     "react-hot-loader": "^4.13.0"
   },
   "resolutions": {

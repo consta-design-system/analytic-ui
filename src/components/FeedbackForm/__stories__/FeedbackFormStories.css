@@ -1,0 +1,12 @@
+.FeedbackFormStories {
+    position: relative;
+    background-color: var(--color-bg-default);
+    width: 100vw;
+    height: 100vh;
+
+    &-Toggler {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+    }
+}

@@ -1,0 +1,71 @@
+.FeedbackForm {
+    position: relative;
+
+    &-Modal {
+        pointer-events: auto;
+        max-width: 451px;
+        min-height: 160px;
+    }
+
+    &-Container {
+        position: relative;
+        background-color: var(--color-bg-default);
+        padding-top: var(--space-4xl);
+        padding-left: var(--space-2xl);
+        padding-right: var(--space-2xl);
+        padding-bottom: var(--space-2xl);
+
+        &_view {
+            &_default {
+                text-align: left;
+
+                & > *:not(:last-child):not(:first-child) {
+                    margin-bottom: var(--space-xl);
+                }
+            }
+    
+            &_center {
+                text-align: center;
+    
+                & > *:not(:last-child):not(:first-child) {
+                    margin-bottom: var(--space-m);
+                }
+            }
+        }
+    }
+    
+    &-SubmitMessage {
+        margin-bottom: var(--space-m);
+    }
+
+    &-CloseButton {
+        position: absolute;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        background: none;
+        border: none;
+        top: var(--space-m);
+        right: var(--space-m);
+
+        & .Icon {
+            color: var(--color-control-typo-clear);
+        }
+    }
+
+    &-Textarea {
+        & .TextField-Label {
+            line-height: var(--line-height-text-s);
+        }
+
+        & .TextField-Input {
+            font-size: var(--size-text-s);
+            line-height: var(--line-height-text-m);
+            padding: calc(var(--space-s) / 2) 0;
+        }
+    }
+}
+
+.Modal {
+    pointer-events: none;
+}
