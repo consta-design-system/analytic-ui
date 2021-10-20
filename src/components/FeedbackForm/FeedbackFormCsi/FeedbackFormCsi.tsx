@@ -11,13 +11,24 @@ type Props = {
   label?: string;
   onChange: (prop: { e: React.MouseEvent; value: number }) => void;
   value?: number;
+  required?: boolean;
+  requiredText?: string;
   view?: 'clear' | 'default';
 };
 
 const cnFeedbackFormCsi = cn('FeedbackFormCsi');
 
 export const FeedbackFormCsi = (props: Props) => {
-  const { label, onChange, value = 0, view = 'default', ...otherProps } = props;
+  const {
+    label,
+    onChange,
+    value = 0,
+    required,
+    requiredText,
+    view = 'default',
+    ...otherProps
+  } = props;
+
   const [focusedItemId, setFocusedItemId] = useState<number>(-1);
 
   return (
@@ -25,7 +36,7 @@ export const FeedbackFormCsi = (props: Props) => {
       {view === 'default' && (
         <Text size="s" className={cnFeedbackFormCsi('Label')}>
           {label}
-          <span className={cnFeedbackFormCsi('Label-Required')}>Это обязательное поле</span>
+          {required && <span className={cnFeedbackFormCsi('Label-Required')}>{requiredText}</span>}
         </Text>
       )}
       <div className={cnFeedbackFormCsi('Rating')}>

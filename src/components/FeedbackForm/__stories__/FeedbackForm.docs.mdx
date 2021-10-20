@@ -1,0 +1,152 @@
+import { FeedbackFormExampleTypeNps, FeedbackFormExampleTypeCsi, FeedbackFormExampleTypeCombo } from './examples/FeedbackFormExampleType/FeedbackFormExampleType';
+import { FeedbackFormExampleLabel } from './examples/FeedbackFormExampleLabel/FeedbackFormExampleLabel';
+import { FeedbackFormExampleQuestion } from './examples/FeedbackFormExampleQuestion/FeedbackFormExampleQuestion';
+
+# FeedbaackForm
+
+Ввыодит модальное окно с виджетом для сбора обратоной 
+связи с пользователей
+
+- [Тип](#тип)
+- [Содержимое](#содержимое)
+  - [Заголовок](#заголовок)
+  - [Открытый вопрос](#открытый-вопрос)
+- [Список свойств](#свойства)
+
+## Тип
+
+Есть три варианта реализации внешнего вида виджета:
+* NPS — шкала из цифр от 0 до 10
+* CSI — шкала из 5 звезд
+* combo - сбоорный вариант из NPS & CSI
+
+### NPS
+
+```tsx
+export const FeedbackFormExampleTypeNps = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  return (
+    <>
+      <FeedbackForm
+        label="Как вам наш модуль по созданию сценариев?"
+        type="NPS"
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
+      <Button label="Открыть виджет" onClick={() => setIsOpen(true)} />
+    </>
+  );
+};
+```
+
+<FeedbackFormExampleTypeNps/>
+
+### CSI
+
+```tsx
+export const FeedbackFormExampleTypeCsi = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  return (
+    <>
+      <FeedbackForm
+        label="Как вам наш модуль по созданию сценариев?"
+        type="CSI"
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
+      <Button label="Открыть виджет" onClick={() => setIsOpen(true)} />
+    </>
+  );
+};
+```
+
+<FeedbackFormExampleTypeCsi/>
+
+### Combo
+
+```tsx
+export const FeedbackFormExampleTypeCombo = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  return (
+    <>
+      <FeedbackForm
+        label="Как вам наш модуль по созданию сценариев?"
+        type="NPS"
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
+      <Button label="Открыть виджет" onClick={() => setIsOpen(true)} />
+    </>
+  );
+};
+```
+
+<FeedbackFormExampleTypeCombo/>
+
+## Содержимое
+
+### Заголовок
+
+Для того чтобы определить заголовок формы необходимо использовать 
+свойство `label`.
+
+```tsx
+export const FeedbackFormExampleLabel = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  return (
+    <div>
+      <FeedbackForm
+        label="Здесь может быть ваш текст"
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
+      <Button label="Открыть виджет" onClick={() => setIsOpen(true)} />
+    </div>
+  );
+};
+```
+
+<FeedbackFormExampleLabel/>
+
+### Открытый вопрос
+
+Для того чтобы указать будет ли в форме использоваться открытый вопрос 
+необходимо использовать свойство `withOpenQuestion`. Заголовок
+вопроса регулируется свойством `openQuestionTitle`.
+
+```tsx
+export const FeedbackFormExampleQuestion = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  return (
+    <div>
+      <FeedbackForm
+        label="Пример с вопросом"
+        isOpen={isOpen}
+        withOpenQuestion
+        openQuestionTitle="Заголовок вопроса"
+        onClose={() => setIsOpen(false)}
+      />
+      <Button label="Открыть виджет" onClick={() => setIsOpen(true)} />
+    </div>
+  );
+};
+```
+
+<FeedbackFormExampleQuestion/>
+
+## Свойства
+
+| Свойство                                   | Тип                                                                                                                                                                  | По умолчанию | Описание                                                                                                                   |
+| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| [`title?`](#заголовок)                     | `string`                                                                                                                                                             | -            | Заголовок для виджета                                                                                                      |
+| [`type?`](#тип)                            | `'CSI', 'combo', 'NPS'`                                                                                                                                              | `NPS`        | Тип формы, отвечает за поля оценки внутри                                                                                  |
+| [`withOpenQuestion?`](#открытый-вопрос)    | `boolean`                                                                                                                                                            | -            | Отвечет за наличие открытого вопроса                                                                                       |
+| [`openQuestionTitle?`](#открытый-вопрос)   | `string`                                                                                                                                                             | -            | Заголовок для открытого вопроса                                                                                            |
+| `isOpen?`                                  | `boolean`                                                                                                                                                            | -            | Свойство отвечает за то открыт виджет или нет                                                                              |
+| `onClose?`                                 | `() => void`                                                                                                                                                         | -            | Действие при закрытии виджета                                                                                              |
+| `onSubmit?`                                | `(args: { e: React.MouseEvent; data: { CSI?: number; question?: string; NPS?: number; }}) => void;`                                                                  | -            | Действие для отправки результатов формы                                                                                    |

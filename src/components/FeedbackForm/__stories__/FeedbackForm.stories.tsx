@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
+import { Button } from '@consta/uikit/Button';
 import { IconMoon } from '@consta/uikit/IconMoon';
 import { IconSun } from '@consta/uikit/IconSun';
-import { Button } from '@consta/uikit/Button';
 import { presetGpnDark, presetGpnDefault, Theme, ThemePreset } from '@consta/uikit/Theme';
 import { ThemeToggler } from '@consta/uikit/ThemeToggler';
 import { boolean, select, text } from '@storybook/addon-knobs';
@@ -12,10 +12,11 @@ import { createMetadata } from '../../../utils/storybook';
 import { defaultFeedbackFormPropType, feedbackFormPropType } from '../helper';
 import { FeedbackForm } from '../FeedbackForm';
 
+import mdx from './FeedbackForm.docs.mdx';
 import './FeedbackFormStories.css';
 
 const defaultKnobs = () => ({
-  label: text('label', 'Как вам наш модуль по созданию сценариев?'),
+  title: text('title', 'Как вам наш модуль по созданию сценариев?'),
   type: select('type', feedbackFormPropType, defaultFeedbackFormPropType),
   withOpenQuestion: boolean('withOpenQuestion', false),
   openQuestionTitle: text('openQuestionTitle', 'Расскажите, что нам стоит добавить или изменить'),
@@ -36,7 +37,7 @@ function getPreset(themeName: ThemeName): ThemePreset {
 const cnFeedbackFormStories = cn('FeedbackFormStories');
 
 export function Playground() {
-  const { label, type, withOpenQuestion, openQuestionTitle } = defaultKnobs();
+  const { title, type, withOpenQuestion, openQuestionTitle } = defaultKnobs();
   const [theme, setTheme] = useState<ThemeName>('gpnDefault');
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
@@ -52,13 +53,12 @@ export function Playground() {
         getItemLabel={(theme) => theme}
       />
       <FeedbackForm
-        label={label}
+        title={title}
         type={type}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         withOpenQuestion={withOpenQuestion}
         openQuestionTitle={openQuestionTitle}
-        onSubmit={() => console.log}
       />
       <Button label="Открыть виджет" onClick={() => setIsOpen(true)} />
     </Theme>
@@ -69,6 +69,9 @@ export default createMetadata({
   title: 'FeedbackForm',
   id: 'FeedbackForm',
   parameters: {
+    docs: {
+      page: mdx,
+    },
     design: {
       type: 'figma',
       url:

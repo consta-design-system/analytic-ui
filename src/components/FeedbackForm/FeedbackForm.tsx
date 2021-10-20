@@ -10,7 +10,7 @@ import { presetGpnDark, presetGpnDefault, Theme, ThemePreset, useTheme } from '@
 
 import { cn } from '../../utils/bem';
 
-import { FeedbackFormProps } from './helper';
+import { defaultFeedbackFormPropType, FeedbackFormProps } from './helper';
 import './FeedbackForm.css';
 import { FeedbackFormCsi } from './FeedbackFormCsi/FeedbackFormCsi';
 import { FeedbackFormNps } from './FeedbackFormNps/FeedbackFormNps';
@@ -21,9 +21,9 @@ type ViewType = 'form' | 'message';
 
 export const FeedbackForm = (props: FeedbackFormProps) => {
   const {
-    label,
+    title,
     onSubmit,
-    type,
+    type = defaultFeedbackFormPropType,
     isOpen,
     onClose,
     withOpenQuestion,
@@ -31,7 +31,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
     ...otherProps
   } = props;
   const [csiValue, setCsiValue] = useState<number | undefined>();
-  const [nspValue, setNspValue] = useState<number | undefined>();
+  const [npsValue, setNpxValue] = useState<number | undefined>();
   const [questionAnswer, setQuestionAnswer] = useState<string | null>('');
   const [buttonIsDisabled, setButtonIsDisabled] = useState<boolean>(true);
   const [view, setView] = useState<ViewType>('form');
@@ -53,7 +53,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
     onSubmit?.({
       e,
       data: {
-        NSP: nspValue,
+        NPS: npsValue,
         CSI: csiValue,
         question: questionAnswer !== null ? questionAnswer : '',
       },
@@ -76,13 +76,13 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
         setButtonIsDisabled(typeof csiValue !== 'number');
         break;
       case 'NPS':
-        setButtonIsDisabled(typeof nspValue !== 'number');
+        setButtonIsDisabled(typeof npsValue !== 'number');
         break;
       case 'combo':
-        setButtonIsDisabled(typeof csiValue !== 'number' || typeof nspValue !== 'number');
+        setButtonIsDisabled(typeof csiValue !== 'number' || typeof npsValue !== 'number');
         break;
     }
-  }, [type, csiValue, nspValue]);
+  }, [type, csiValue, npsValue]);
 
   return (
     <Theme preset={themePreset} className={cnFeedbackForm()}>
@@ -104,18 +104,24 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
           {view === 'form' ? (
             <>
               <Text lineHeight="xs" size="2xl" weight="semibold">
-                {label}
+                {title}
               </Text>
               {(type === 'CSI' || type === 'combo') && (
                 <FeedbackFormCsi
                   label="Общая оценка"
                   value={csiValue}
+                  required
+                  requiredText="Это обязательное поле"
                   view={type !== 'CSI' ? 'default' : 'clear'}
                   onChange={({ e, value }) => onCsiClick(e, value)}
                 />
               )}
               {(type === 'NPS' || type === 'combo') && (
-                <FeedbackFormNps value={nspValue} onChange={({ value }) => setNspValue(value)} />
+                <FeedbackFormNps
+                  label="Какова вероятность, что вы это кому-нибудь посоветуете?"
+                  value={npsValue}
+                  onChange={({ value }) => setNpxValue(value)}
+                />
               )}
               {withOpenQuestion && (
                 <TextField

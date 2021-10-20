@@ -7,13 +7,13 @@ export const defaultFeedbackFormPropType: FeedbackFormPropType = feedbackFormPro
 type FeedbackFormResult = {
   CSI?: number;
   question?: string;
-  NSP?: number;
+  NPS?: number;
 };
 
 export type FeedbackFormProps = {
-  label?: string;
+  title?: string;
   isOpen?: boolean;
-  type: FeedbackFormPropType;
+  type?: FeedbackFormPropType;
   withOpenQuestion?: boolean;
   openQuestionTitle?: string;
   onClose?: () => void;
