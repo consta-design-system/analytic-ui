@@ -2334,10 +2334,10 @@
   resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-11.0.0.tgz#719cf05fcc1abb6533610a2e0f5dd1e61eac14fe"
   integrity sha512-VoNqai1vR5anRF5Tuh/+SWDFk7xi7oMwHrHrbm1BprYXjB2RJsWLhUrStMssDxEl5lW/z3EUdg8RvH/IUBccSQ==
 
-"@consta/uikit@^3.7.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@consta/uikit/-/uikit-3.7.0.tgz#e3c0ccb3004d5512e320e77ca7be6b93babc4344"
-  integrity sha512-AXDDJF78NAMXDigP4WRdIa3eYPgNIwQQbDNmwQzvHXJuWxTO7Sp3525UWl/YCE5D1gG88hJgc9qixeIf0LJTXw==
+"@consta/uikit@^3.9.0":
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/@consta/uikit/-/uikit-3.9.0.tgz#3ec583412441af012eceecd96f32b39fc88a43bc"
+  integrity sha512-3rkuWKeNVJ6gz/oz24eXgsvCNp+f3RcJWWGcIJ7OGKEndF+Wh2OvxbkwZ0N/pcZh//xrlfCcJ2DZU0xNTrggFg==
   dependencies:
     "@bem-react/classname" "^1.5.8"
     "@bem-react/classnames" "^1.3.9"
@@ -17547,6 +17547,13 @@ stylelint-order@3.1.1:
     lodash "^4.17.15"
     postcss "^7.0.17"
     postcss-sorting "^5.0.1"
+
+stylelint-prettier@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/stylelint-prettier/-/stylelint-prettier-1.2.0.tgz#a133d75c794ba820ee47136fc4bf8c72ea185427"
+  integrity sha512-/MYz6W2CNgKHblPzPtk7cybu8H5dGG3c2GevL64RButERj1uJg4SdBIIat1hMfDOmN6QQpldc6tCc//ZAWh9WQ==
+  dependencies:
+    prettier-linter-helpers "^1.0.0"
 
 stylelint@10.1.0:
   version "10.1.0"

@@ -18,6 +18,8 @@ type Props = {
 
 const cnFeedbackFormCsi = cn('FeedbackFormCsi');
 
+const stars = [1, 2, 3, 4, 5] as const;
+
 export const FeedbackFormCsi = (props: Props) => {
   const {
     label,
@@ -39,16 +41,15 @@ export const FeedbackFormCsi = (props: Props) => {
           {required && <span className={cnFeedbackFormCsi('Label-Required')}>{requiredText}</span>}
         </Text>
       )}
-      <div className={cnFeedbackFormCsi('Rating')}>
-        {[1, 2, 3, 4, 5].map((id) => (
+      <div className={cnFeedbackFormCsi('Rating')} onMouseLeave={() => setFocusedItemId(-1)}>
+        {stars.map((id) => (
           <button
             type="button"
-            key={`FeedbackCsiRating-${id}`}
+            key={cnFeedbackFormCsi('Rating', { id })}
             className={cnFeedbackFormCsi('Rating-Button', {
               active: id <= focusedItemId || (typeof value === 'number' && id <= value),
             })}
             onMouseEnter={() => setFocusedItemId(id)}
-            onMouseLeave={() => setFocusedItemId(-1)}
             onClick={(e) => onChange?.({ e, value: id })}
           >
             <IconFavorite />

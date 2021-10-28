@@ -1,36 +1,35 @@
-.FeedbackFormCsi {
-    &-Label {
-        color: var(--color-typo-secondary);
+.aui--FeedbackFormCsi {
+  &-Label {
+    color: var(--color-typo-secondary);
 
-        &-Required {
-            margin-left: var(--space-xs);
-            color: var(--color-typo-ghost);
-            font-size: var(--size-text-2xs);
-            line-height: var(--line-height-text-m);
-        }
+    &-Required {
+      margin-left: var(--space-xs);
+      color: var(--color-typo-ghost);
+      font-size: var(--size-text-2xs);
+      line-height: var(--line-height-text-m);
     }
+  }
 
-    &-Rating {
-        margin-top: var(--space-xs);
+  &-Rating {
+    margin-top: var(--space-xs);
 
-        &-Button {
-            cursor: pointer;
-            margin: 0;
-            padding: 0;
-            background: none;
-            border: none;
-    
-            & .Icon {
-                color: var(--color-control-typo-clear);
-                transition: color 0.3s;
-                width: var(--space-3xl);
-                height: var(--space-3xl);
-            }
-    
-            &_active .Icon {
-                color: var(--color-bg-caution);
-            }
-    
-        }
+    &-Button {
+      margin: 0;
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      & .Icon {
+        width: var(--space-3xl);
+        height: var(--space-3xl);
+        color: var(--color-control-bg-ghost);
+        transition: color 0.3s;
+      }
+
+      &_active .Icon {
+        color: var(--color-bg-caution);
+      }
     }
+  }
 }

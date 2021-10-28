@@ -6,7 +6,7 @@ import { IconClose } from '@consta/uikit/IconClose';
 import { Modal } from '@consta/uikit/Modal';
 import { Text } from '@consta/uikit/Text';
 import { TextField } from '@consta/uikit/TextField';
-import { presetGpnDark, presetGpnDefault, Theme, ThemePreset, useTheme } from '@consta/uikit/Theme';
+import { useTheme } from '@consta/uikit/Theme';
 
 import { cn } from '../../utils/bem';
 
@@ -36,19 +36,10 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
   const [questionAnswer, setQuestionAnswer] = useState<string | null>('');
   const [buttonIsDisabled, setButtonIsDisabled] = useState<boolean>(true);
   const [view, setView] = useState<ViewType>('form');
-  const [themePreset, setThemePreset] = useState<ThemePreset>(presetGpnDark);
 
   const formRef = useRef<HTMLDivElement>(null);
 
-  const { theme } = useTheme();
-
-  useEffect(() => {
-    if (theme.color.primary === 'gpnDefault') {
-      setThemePreset(presetGpnDark);
-    } else {
-      setThemePreset(presetGpnDefault);
-    }
-  }, [theme]);
+  const { themeClassNames } = useTheme();
 
   const handleSubmitClick = (e: React.MouseEvent) => {
     onSubmit?.({
@@ -56,7 +47,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
       data: {
         NPS: npsValue,
         CSI: csiValue,
-        question: questionAnswer !== null ? questionAnswer : '',
+        question: !!questionAnswer ? questionAnswer : '',
       },
     });
     setView('message');
@@ -86,8 +77,14 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
   }, [type, csiValue, npsValue]);
 
   return (
-    <Theme preset={themePreset} className={cnFeedbackForm()}>
-      <Modal className={cnFeedbackForm('Modal')} isOpen={isOpen} hasOverlay={false}>
+    <>
+      <Modal
+        className={cnFeedbackForm('Modal', [themeClassNames.color.invert])}
+        isOpen={isOpen}
+        hasOverlay={true}
+        onEsc={onClose}
+        key="modal"
+      >
         <div
           className={cnFeedbackForm('Container', {
             view: type === 'CSI' && !withOpenQuestion ? 'center' : 'default',
@@ -95,13 +92,15 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
           ref={formRef}
           {...otherProps}
         >
-          <button
+          <Button
             className={cnFeedbackForm('CloseButton')}
-            type="button"
-            onClick={() => onClose?.()}
-          >
-            <IconClose size="s" />
-          </button>
+            iconLeft={IconClose}
+            size="xs"
+            iconSize="s"
+            onClick={onClose}
+            form="round"
+            view="clear"
+          />
           {view === 'form' ? (
             <>
               <Text lineHeight="xs" size="2xl" weight="semibold">
@@ -166,6 +165,6 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
           )}
         </div>
       </Modal>
-    </Theme>
+    </>
   );
 };
