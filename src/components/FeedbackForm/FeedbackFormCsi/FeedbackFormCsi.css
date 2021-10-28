@@ -23,7 +23,7 @@
       & .Icon {
         width: var(--space-3xl);
         height: var(--space-3xl);
-        color: var(--color-control-bg-ghost);
+        color: var(--color-typo-ghost);
         transition: color 0.3s;
       }
 
