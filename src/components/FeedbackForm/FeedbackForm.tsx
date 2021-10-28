@@ -26,6 +26,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
     type = defaultFeedbackFormPropType,
     isOpen,
     onClose,
+    csiTitle,
     withOpenQuestion,
     openQuestionTitle,
     ...otherProps
@@ -62,7 +63,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
   };
 
   const onCsiClick = (e: React.MouseEvent, rating: number) => {
-    if (type !== 'CSI') {
+    if (type !== 'CSI' || (withOpenQuestion && type === 'CSI')) {
       setCsiValue(rating);
     } else {
       onSubmit?.({ e, data: { CSI: rating } });
@@ -89,7 +90,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
       <Modal className={cnFeedbackForm('Modal')} isOpen={isOpen} hasOverlay={false}>
         <div
           className={cnFeedbackForm('Container', {
-            view: type === 'CSI' ? 'center' : 'default',
+            view: type === 'CSI' && !withOpenQuestion ? 'center' : 'default',
           })}
           ref={formRef}
           {...otherProps}
@@ -108,11 +109,13 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
               </Text>
               {(type === 'CSI' || type === 'combo') && (
                 <FeedbackFormCsi
-                  label="Общая оценка"
+                  label={csiTitle}
                   value={csiValue}
                   required
                   requiredText="Это обязательное поле"
-                  view={type !== 'CSI' ? 'default' : 'clear'}
+                  view={
+                    type !== 'CSI' || (withOpenQuestion && type === 'CSI') ? 'default' : 'clear'
+                  }
                   onChange={({ e, value }) => onCsiClick(e, value)}
                 />
               )}
@@ -136,7 +139,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
                   onChange={({ value }) => setQuestionAnswer(value)}
                 />
               )}
-              {type !== 'CSI' && (
+              {(type !== 'CSI' || (withOpenQuestion && type === 'CSI')) && (
                 <Button
                   label="Отправить оценку"
                   onClick={handleSubmitClick}

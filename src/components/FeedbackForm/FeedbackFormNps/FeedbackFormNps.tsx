@@ -21,7 +21,9 @@ export const FeedbackFormNps = (props: Props) => {
 
   return (
     <div className={cnFeedbackFormNps()} {...otherProps}>
-      <Text className={cnFeedbackFormNps('Label')}>{label}</Text>
+      <Text size="s" lineHeight="s" className={cnFeedbackFormNps('Label')}>
+        {label}
+      </Text>
       <div className={cnFeedbackFormNps('Rating')}>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((id) => (
           <Button

@@ -19,6 +19,7 @@ const defaultKnobs = () => ({
   title: text('title', 'Как вам наш модуль по созданию сценариев?'),
   type: select('type', feedbackFormPropType, defaultFeedbackFormPropType),
   withOpenQuestion: boolean('withOpenQuestion', false),
+  csiTitle: text('csiTitle', 'Общая оценка'),
   openQuestionTitle: text('openQuestionTitle', 'Расскажите, что нам стоит добавить или изменить'),
 });
 
@@ -37,9 +38,9 @@ function getPreset(themeName: ThemeName): ThemePreset {
 const cnFeedbackFormStories = cn('FeedbackFormStories');
 
 export function Playground() {
-  const { title, type, withOpenQuestion, openQuestionTitle } = defaultKnobs();
+  const { title, type, withOpenQuestion, openQuestionTitle, csiTitle } = defaultKnobs();
   const [theme, setTheme] = useState<ThemeName>('gpnDefault');
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <Theme preset={getPreset(theme)} className={cnFeedbackFormStories()}>
@@ -56,6 +57,7 @@ export function Playground() {
         title={title}
         type={type}
         isOpen={isOpen}
+        csiTitle={csiTitle}
         onClose={() => setIsOpen(false)}
         withOpenQuestion={withOpenQuestion}
         openQuestionTitle={openQuestionTitle}

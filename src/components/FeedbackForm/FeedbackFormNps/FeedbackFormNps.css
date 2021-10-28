@@ -3,6 +3,7 @@
 
     &-Label {
         color: var(--color-typo-secondary);
+        font-weight: normal;
 
         &-Required {
             margin-left: var(--space-m);

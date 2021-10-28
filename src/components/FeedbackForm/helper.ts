@@ -15,6 +15,7 @@ export type FeedbackFormProps = {
   isOpen?: boolean;
   type?: FeedbackFormPropType;
   withOpenQuestion?: boolean;
+  csiTitle?: string;
   openQuestionTitle?: string;
   onClose?: () => void;
   onSubmit?: (props: { e: React.MouseEvent; data: FeedbackFormResult }) => void;
