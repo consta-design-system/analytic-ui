@@ -1,0 +1,62 @@
+.aui--FeedbackForm {
+  position: relative;
+
+  &-Modal {
+    max-width: 451px;
+    min-height: 160px;
+    pointer-events: auto;
+  }
+
+  &-Container {
+    position: relative;
+    padding-top: var(--space-4xl);
+    padding-right: var(--space-2xl);
+    padding-left: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+    background-color: var(--color-bg-default);
+
+    &_view {
+      &_default {
+        text-align: left;
+
+        & > *:not(:last-child):not(:first-child) {
+          margin-bottom: var(--space-xl);
+        }
+      }
+
+      &_center {
+        text-align: center;
+
+        & > *:not(:last-child):not(:first-child) {
+          margin-bottom: var(--space-m);
+        }
+      }
+    }
+  }
+
+  &-SubmitMessage {
+    margin-bottom: var(--space-m);
+  }
+
+  &-CloseButton {
+    position: absolute;
+    top: var(--space-m);
+    right: var(--space-m);
+  }
+
+  &-Textarea {
+    & .TextField-Label {
+      line-height: var(--line-height-text-s);
+    }
+
+    & .TextField-Input {
+      padding: calc(var(--space-s) / 2) 0;
+      font-size: var(--size-text-s);
+      line-height: var(--line-height-text-m);
+    }
+  }
+}
+
+.Modal {
+  pointer-events: none;
+}
