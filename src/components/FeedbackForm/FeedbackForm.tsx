@@ -81,7 +81,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
       <Modal
         className={cnFeedbackForm('Modal', [themeClassNames.color.invert])}
         isOpen={isOpen}
-        hasOverlay={true}
+        hasOverlay={false}
         onEsc={onClose}
         key="modal"
       >
