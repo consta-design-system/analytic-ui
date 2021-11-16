@@ -1,26 +1,38 @@
-import { FeedbackFormExampleTypeNps, FeedbackFormExampleTypeCsi, FeedbackFormExampleTypeCombo } from './examples/FeedbackFormExampleType/FeedbackFormExampleType';
+import {
+  FeedbackFormExampleTypeNps,
+  FeedbackFormExampleTypeCsi,
+  FeedbackFormExampleTypeCombo,
+} from './examples/FeedbackFormExampleType/FeedbackFormExampleType';
 import { FeedbackFormExampleLabel } from './examples/FeedbackFormExampleLabel/FeedbackFormExampleLabel';
 import { FeedbackFormExampleQuestion } from './examples/FeedbackFormExampleQuestion/FeedbackFormExampleQuestion';
 
-# FeedbaackForm
+# FeedbackForm
 
-Ввыодит модальное окно с виджетом для сбора обратоной 
-связи с пользователей
+```tsx
+import { FeedbackForm } from '@consta/FeedbackForm';
+```
 
-- [Тип](#тип)
+Виджет обратной связи: с его помощью пользователи могут ставить оценки и писать отзывы.
+
+- [Тип виджета](#тип-виджета)
+  - [NPS — шкала от 0 до 10](#nps-шкала-от-0-до-10)
+  - [CSI — шкала из 5 звёзд](#csi-шкала-из-5-звёзд)
+  - [combo — звёзды и числа](#combo-звёзды-и-числа)
 - [Содержимое](#содержимое)
   - [Заголовок](#заголовок)
-  - [Открытый вопрос](#открытый-вопрос)
+  - [Поле для отзыва](#поле-для-отзыва)
+- [Импорт](#импорт)
 - [Список свойств](#свойства)
 
-## Тип
+## Тип виджета
 
-Есть три варианта реализации внешнего вида виджета:
-* NPS — шкала из цифр от 0 до 10
-* CSI — шкала из 5 звезд
-* combo - сбоорный вариант из NPS & CSI
+За тип виджета отвечает свойство `type`. Варианты:
 
-### NPS
+- `NPS` — шкала от 0 до 10,
+- `CSI` — шкала из 5 звёзд,
+- `combo` — обе шкалы: из 5 звёзд и от 0 до 10.
+
+### NPS: шкала от 0 до 10
 
 ```tsx
 export const FeedbackFormExampleTypeNps = () => {
@@ -40,9 +52,9 @@ export const FeedbackFormExampleTypeNps = () => {
 };
 ```
 
-<FeedbackFormExampleTypeNps/>
+<FeedbackFormExampleTypeNps />
 
-### CSI
+### CSI: шкала из 5 звёзд
 
 ```tsx
 export const FeedbackFormExampleTypeCsi = () => {
@@ -62,9 +74,9 @@ export const FeedbackFormExampleTypeCsi = () => {
 };
 ```
 
-<FeedbackFormExampleTypeCsi/>
+<FeedbackFormExampleTypeCsi />
 
-### Combo
+### combo: звёзды и числа
 
 ```tsx
 export const FeedbackFormExampleTypeCombo = () => {
@@ -84,14 +96,13 @@ export const FeedbackFormExampleTypeCombo = () => {
 };
 ```
 
-<FeedbackFormExampleTypeCombo/>
+<FeedbackFormExampleTypeCombo />
 
 ## Содержимое
 
 ### Заголовок
 
-Для того чтобы определить заголовок формы необходимо использовать 
-свойство `label`.
+Поменять заголовок виджета можно с помощью свойства `label`.
 
 ```tsx
 export const FeedbackFormExampleLabel = () => {
@@ -110,13 +121,14 @@ export const FeedbackFormExampleLabel = () => {
 };
 ```
 
-<FeedbackFormExampleLabel/>
+<FeedbackFormExampleLabel />
 
-### Открытый вопрос
+### Поле для отзыва
 
-Для того чтобы указать будет ли в форме использоваться открытый вопрос 
-необходимо использовать свойство `withOpenQuestion`. Заголовок
-вопроса регулируется свойством `openQuestionTitle`.
+Чтобы показать в виджете поле, в котором пользователь может написать отзыв,
+добавьте `withOpenQuestion`.
+
+Заголовок перед этим полем можно поменять в свойстве `openQuestionTitle`.
 
 ```tsx
 export const FeedbackFormExampleQuestion = () => {
@@ -137,16 +149,22 @@ export const FeedbackFormExampleQuestion = () => {
 };
 ```
 
-<FeedbackFormExampleQuestion/>
+<FeedbackFormExampleQuestion />
+
+## Импорт
+
+```tsx
+import { FeedbackForm } from '@consta/FeedbackForm';
+```
 
 ## Свойства
 
-| Свойство                                   | Тип                                                                                                                                                                  | По умолчанию | Описание                                                                                                                   |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| [`title?`](#заголовок)                     | `string`                                                                                                                                                             | -            | Заголовок для виджета                                                                                                      |
-| [`type?`](#тип)                            | `'CSI', 'combo', 'NPS'`                                                                                                                                              | `NPS`        | Тип формы, отвечает за поля оценки внутри                                                                                  |
-| [`withOpenQuestion?`](#открытый-вопрос)    | `boolean`                                                                                                                                                            | -            | Отвечет за наличие открытого вопроса                                                                                       |
-| [`openQuestionTitle?`](#открытый-вопрос)   | `string`                                                                                                                                                             | -            | Заголовок для открытого вопроса                                                                                            |
-| `isOpen?`                                  | `boolean`                                                                                                                                                            | -            | Свойство отвечает за то открыт виджет или нет                                                                              |
-| `onClose?`                                 | `() => void`                                                                                                                                                         | -            | Действие при закрытии виджета                                                                                              |
-| `onSubmit?`                                | `(args: { e: React.MouseEvent; data: { CSI?: number; question?: string; NPS?: number; }}) => void;`                                                                  | -            | Действие для отправки результатов формы                                                                                    |
+| Свойство                                 | Тип                                                                                                 | По умолчанию | Описание                                                                    |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------ | --------------------------------------------------------------------------- |
+| [`title?`](#заголовок)                   | `string`                                                                                            | -            | Заголовок для виджета                                                       |
+| [`type?`](#тип-виджета)                  | `'NPS'`, `'CSI'`, `'combo'`                                                                         | `NPS`        | Тип виджета, определяет, что будет внутри: числа, звёзды или и то, и другое |
+| [`withOpenQuestion?`](#поле-для-отзыва)  | `boolean`                                                                                           | -            | Добавляет поле для отзыва                                                   |
+| [`openQuestionTitle?`](#поле-для-отзыва) | `string`                                                                                            | -            | Заголовок перед полем для отзыва                                            |
+| `isOpen?`                                | `boolean`                                                                                           | -            | Открыт ли виджет                                                            |
+| `onClose?`                               | `() => void`                                                                                        | -            | Действие при закрытии виджета                                               |
+| `onSubmit?`                              | `(args: { e: React.MouseEvent; data: { CSI?: number; question?: string; NPS?: number; }}) => void;` | -            | Действие для отправки результатов заполнения виджета                        |

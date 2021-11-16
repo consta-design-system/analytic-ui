@@ -45,10 +45,10 @@ export const FeedbackFormNps = (props: Props) => {
       </div>
       <div className={cnFeedbackFormNps('Scale')}>
         <Text view="ghost" size="2xs" lineHeight="m">
-          Не готов рекомендовать
+          Не буду советовать
         </Text>
         <Text view="ghost" size="2xs" lineHeight="m">
-          Обязательно порекомендую
+          Обязательно посоветую
         </Text>
       </div>
     </div>
