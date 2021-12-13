@@ -14,6 +14,7 @@ type Props = {
   required?: boolean;
   requiredText?: string;
   view?: 'clear' | 'default';
+  isMobile?: boolean;
 };
 
 const cnFeedbackFormCsi = cn('FeedbackFormCsi');
@@ -28,6 +29,7 @@ export const FeedbackFormCsi = (props: Props) => {
     required,
     requiredText,
     view = 'default',
+    isMobile = false,
     ...otherProps
   } = props;
 
@@ -36,7 +38,7 @@ export const FeedbackFormCsi = (props: Props) => {
   return (
     <div className={cnFeedbackFormCsi()} {...otherProps}>
       {view === 'default' && (
-        <Text size="s" className={cnFeedbackFormCsi('Label')}>
+        <Text size={isMobile ? 'xs' : 's'} className={cnFeedbackFormCsi('Label')}>
           {label}
           {required && <span className={cnFeedbackFormCsi('Label-Required')}>{requiredText}</span>}
         </Text>
