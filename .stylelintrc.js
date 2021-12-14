@@ -18,6 +18,5 @@ module.exports = {
         ignoreAtRules: ['define-mixin', 'mixin'],
       },
     ],
-    'order/properties-order':  null,
   },
 };
