@@ -1,3 +1,3 @@
-import { withNaming } from '@bem-react/classname'
+import { withNaming } from '@bem-react/classname';
 
-export const cn = withNaming({ n: 'cw-story--', e: '-', m: '_' })
+export const cn = withNaming({ n: 'cw-story--', e: '-', m: '_' });

@@ -1,1 +1,1 @@
-export * from './DocsDecorator'
+export * from './DocsDecorator';

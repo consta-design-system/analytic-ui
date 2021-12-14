@@ -30,5 +30,6 @@ module.exports = {
     ],
     'react-hooks/exhaustive-deps': 'off',
     'default-case': 'off',
+    '@typescript-eslint/member-ordering': 'off',
   },
 }

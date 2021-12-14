@@ -1,29 +1,29 @@
-import React from 'react'
+import React from 'react';
 
-import { presetGpnDark, presetGpnDefault, presetGpnDisplay, Theme } from '@consta/uikit/Theme'
+import { presetGpnDark, presetGpnDefault, presetGpnDisplay, Theme } from '@consta/uikit/Theme';
 
-type ThemeName = 'gpnDefault' | 'gpnDark' | 'gpnDisplay'
+type ThemeName = 'gpnDefault' | 'gpnDark' | 'gpnDisplay';
 type Theme = {
-  name: ThemeName
-  default?: boolean
-  color: string
-}
+  name: ThemeName;
+  default?: boolean;
+  color: string;
+};
 type Props = {
-  themeName: ThemeName
-}
+  themeName: ThemeName;
+};
 
 const getTheme = (themeName?: ThemeName) => {
   switch (themeName) {
     case 'gpnDefault':
-      return presetGpnDefault
+      return presetGpnDefault;
     case 'gpnDisplay':
-      return presetGpnDisplay
+      return presetGpnDisplay;
     case 'gpnDark':
-      return presetGpnDark
+      return presetGpnDark;
   }
 
-  return presetGpnDisplay
-}
+  return presetGpnDisplay;
+};
 
 export const listOfThemes: readonly Theme[] = [
   {
@@ -39,12 +39,12 @@ export const listOfThemes: readonly Theme[] = [
     name: 'gpnDisplay',
     color: '#002033',
   },
-]
+];
 
 export const ThemeDecorator: React.FC<Props> = ({ children, themeName }) => {
   return (
     <Theme preset={getTheme(themeName)} style={{ background: 'var(--color-bg-default)' }}>
       {children}
     </Theme>
-  )
-}
+  );
+};

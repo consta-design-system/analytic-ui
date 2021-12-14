@@ -8,3 +8,4 @@ babel.config.js
 jest.config.js
 postcss.config.js
 *.css.d.ts
+src/utils/storybook.tsx
