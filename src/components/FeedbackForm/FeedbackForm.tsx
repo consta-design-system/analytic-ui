@@ -45,7 +45,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
 
   useEffect(() => {
     const resize = () => {
-      if (window.screen.width <= 480) {
+      if (window.innerWidth <= 480) {
         on();
       } else {
         off();
