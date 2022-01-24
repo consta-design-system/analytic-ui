@@ -14,13 +14,13 @@
     "format": "prettier --write '{src,types,scripts}/**/*.{json,{j,t}s{,x},css,}'",
     "lint-fix": "npm-run-all format lint-fix:*",
     "lint:ts": "eslint '{src,types}/**/*.ts{,x}'",
-    "lint-fix:ts": "eslint '{src,types}/**/*.ts{,x}' --fix",
+    "lint-fix:ts": "eslint --fix '{src,types}/**/*.ts{,x}'",
     "lint:css": "stylelint 'src/**/*.css'",
-    "lint-fix:css": "stylelint 'src/**/*.css' --fix",
+    "lint-fix:css": "stylelint --fix 'src/**/*.css'",
     "checktypes": "tsc --noEmit --extendedDiagnostics",
     "unit": "NODE_PATH=./node_modules TZ=Europe/Moscow jest",
     "unit:watch": "yarn unit --watchAll",
-    "test": "npm-run-all --parallel lint checktypes",
+    "test": "yarn lint-fix & npm-run-all --parallel lint checktypes",
     "prepare": "yarn install-peers"
   },
   "files": [
