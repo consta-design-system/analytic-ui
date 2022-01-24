@@ -18,5 +18,6 @@ module.exports = {
         terms: ['TODO', 'todo'],
       },
     ],
+    'react-hooks/exhaustive-deps': 'off',
   },
 }

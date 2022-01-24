@@ -5,6 +5,14 @@
     max-width: 451px;
     min-height: 160px;
     pointer-events: auto;
+
+    @media screen and (max-width: 480px) {
+      min-height: 120px;
+
+      &.Modal-Window {
+        min-width: 288px;
+      }
+    }
   }
 
   &-Container {
@@ -15,12 +23,30 @@
     padding-bottom: var(--space-2xl);
     background-color: var(--color-bg-default);
 
+    @media screen and (max-width: 480px) {
+      padding-top: var(--space-2xl);
+      padding-right: var(--space-m);
+      padding-left: var(--space-m);
+      padding-bottom: var(--space-2xl);
+
+      &_view_default,
+      &_view_center {
+        & > *:last-child:not(:nth-child(3)) {
+          margin-top: var(--space-xs);
+        }
+      }
+    }
+
     &_view {
       &_default {
         text-align: left;
 
         & > *:not(:last-child):not(:first-child) {
           margin-bottom: var(--space-xl);
+
+          @media screen and (max-width: 480px) {
+            margin-bottom: var(--space-m);
+          }
         }
       }
 
@@ -29,6 +55,10 @@
 
         & > *:not(:last-child):not(:first-child) {
           margin-bottom: var(--space-m);
+
+          @media screen and (max-width: 480px) {
+            margin-bottom: var(--space-m);
+          }
         }
       }
     }
@@ -36,12 +66,22 @@
 
   &-SubmitMessage {
     margin-bottom: var(--space-m);
+
+    @media screen and (max-width: 480px) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 
   &-CloseButton {
     position: absolute;
-    top: var(--space-m);
-    right: var(--space-m);
+    top: var(--space-s);
+    right: var(--space-s);
+
+    @media screen and (max-width: 480px) {
+      top: var(--space-xs);
+      right: var(--space-xs);
+    }
   }
 
   &-Textarea {
