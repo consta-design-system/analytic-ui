@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import { useFlag } from '@consta/uikit/useFlag';
 import { Button } from '@consta/uikit/Button';
 import { IconCheck } from '@consta/uikit/IconCheck';
 import { IconClose } from '@consta/uikit/IconClose';
@@ -33,13 +34,27 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
   } = props;
   const [csiValue, setCsiValue] = useState<number | undefined>();
   const [npsValue, setNpxValue] = useState<number | undefined>();
-  const [questionAnswer, setQuestionAnswer] = useState<string | null>('');
+  const [questionAnswer, setQuestionAnswer] = useState<string | null>(null);
   const [buttonIsDisabled, setButtonIsDisabled] = useState<boolean>(true);
   const [view, setView] = useState<ViewType>('form');
+  const [isMobile, { on, off }] = useFlag(false);
 
   const formRef = useRef<HTMLDivElement>(null);
 
   const { themeClassNames } = useTheme();
+
+  useEffect(() => {
+    const resize = () => {
+      if (window.innerWidth <= 480) {
+        on();
+      } else {
+        off();
+      }
+    };
+    resize();
+    window.addEventListener('resize', resize);
+    return () => window.removeEventListener('resize', resize);
+  }, []);
 
   const handleSubmitClick = (e: React.MouseEvent) => {
     onSubmit?.({
@@ -95,7 +110,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
           <Button
             className={cnFeedbackForm('CloseButton')}
             iconLeft={IconClose}
-            size="xs"
+            size={isMobile ? 'xs' : 's'}
             iconSize="s"
             onClick={onClose}
             form="round"
@@ -103,7 +118,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
           />
           {view === 'form' ? (
             <>
-              <Text lineHeight="xs" size="2xl" weight="semibold">
+              <Text lineHeight="xs" size={isMobile ? 'xl' : '2xl'} weight="semibold">
                 {title}
               </Text>
               {(type === 'CSI' || type === 'combo') && (
@@ -111,6 +126,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
                   label={csiTitle}
                   value={csiValue}
                   required
+                  isMobile={isMobile}
                   requiredText="Это обязательное поле"
                   view={
                     type !== 'CSI' || (withOpenQuestion && type === 'CSI') ? 'default' : 'clear'
@@ -122,6 +138,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
                 <FeedbackFormNps
                   label="Какова вероятность, что вы это кому-нибудь посоветуете?"
                   value={npsValue}
+                  isMobile={isMobile}
                   onChange={({ value }) => setNpxValue(value)}
                 />
               )}
@@ -132,7 +149,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
                   width="full"
                   label={openQuestionTitle}
                   rows={4}
-                  size="s"
+                  size={isMobile ? 'xs' : 's'}
                   value={questionAnswer}
                   className={cnFeedbackForm('Textarea')}
                   onChange={({ value }) => setQuestionAnswer(value)}
