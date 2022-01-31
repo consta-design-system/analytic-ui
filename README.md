@@ -1,6 +1,6 @@
 # [Дизайн-система Consta](http://consta.gazprom-neft.ru/) | Analytic UI
 
-Компоненты для аналитики и обратной связи, входят в [дизайн-систему Consta](https://github.com/gazprom-neft/consta-uikit).
+Компоненты для аналитики и обратной связи, входят в [дизайн-систему Consta](https://github.com/consta-design-system/uikit).
 
 # Как использовать
 
