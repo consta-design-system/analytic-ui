@@ -1,7 +1,7 @@
-import { addons } from '@storybook/addons'
-import { create } from '@storybook/theming/create'
+import { addons } from '@storybook/addons';
+import { create } from '@storybook/theming/create';
 
-import logo from './logo.svg'
+import logo from './logo.svg';
 
 const colors = {
   '--color-bg-normal': 'rgb(86, 185, 242)',
@@ -13,7 +13,7 @@ const colors = {
   '--color-control-bg-default': 'rgb(255, 255, 255)',
   '--color-control-bg-border-default': 'rgba(0, 66, 105, 0.28)',
   '--color-control-typo-default': 'rgb(0, 32, 51)',
-}
+};
 
 export const theme = create({
   // preset name used by default
@@ -43,10 +43,9 @@ export const theme = create({
   inputTextColor: colors['--color-control-typo-default'],
   inputBorderRadius: 4,
   brandTitle: 'Consta Table storybook',
-  brandUrl: 'https://consta-table.vercel.app',
   brandImage: logo,
-})
+});
 
 addons.setConfig({
   theme,
-})
+});
