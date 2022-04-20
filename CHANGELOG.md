@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.2.1 (20/04/2022)
+- [docs(global): replace url (#11)](https://github.com/consta-design-system/analytic-ui/commit/f85f702c2e7589b26032df97b5679bca56ae7856) - [@arhayka](https://github.com/arhayka)
+- [docs: change links to vercel (#10)](https://github.com/consta-design-system/analytic-ui/commit/9e16b62e4da1934f15d66db58d3f137751f413b2) - [@arhayka](https://github.com/arhayka)
+- [chore(deploy): add deploy automatization (#9)](https://github.com/consta-design-system/analytic-ui/commit/b669fd44dd35492230f9b56675817b28d588b89f) - [@gizeasy](https://github.com/gizeasy)
+- [fix(Favicon): fix favicon (#8)](https://github.com/consta-design-system/analytic-ui/commit/7ad03f45245e4b97d66bcd8b6c42a6e2bf11477b) - [@N1MBER](https://github.com/N1MBER)
+- [chore(package.json): edit engines](https://github.com/consta-design-system/analytic-ui/commit/e386d5a0e512e37180c3cbf9630c084596c525ce) - [@gizeasy](https://github.com/gizeasy)
+- [docs(common): edit docs to github (#7)](https://github.com/consta-design-system/analytic-ui/commit/3dbb8543b275ebfbbe767929129346a1d276422d) - [@arhayka](https://github.com/arhayka)
+
+--------------------
+
 ## v0.2.0 (26/01/2022)
 Самое важное:
 - Добавили поддержку мобильных устройств в `FeedbackForm`
@@ -17,6 +27,6 @@
 --------------------
 
 ## v0.1.2 (28/10/2021)
-- [feat(FeedbackForm): add FeedbackForm (#1)](https://github.com/consta-design-system/analytic-uianalytic-ui/commit/00fc58085445eeb7f3896c8c72cbd509a67add87) - [@N1MBER](https://github.com/N1MBER)
-- [Add base files for new lib](https://github.com/consta-design-system/analytic-uianalytic-ui/commit/8773d76064a42adfefb46c4b1e5fbe2c12098213) - [@N1MBER](https://github.com/N1MBER)
-- [Initial commit](https://github.com/consta-design-system/analytic-uianalytic-ui/commit/dfe694ab253f3408e76b0c9bc23a95fcef8c33a9) - [@gizeasy](https://github.com/gizeasy)
+- [feat(FeedbackForm): add FeedbackForm (#1)](https://github.com/gazprom-neft/analytic-ui/commit/00fc58085445eeb7f3896c8c72cbd509a67add87) - [@N1MBER](https://github.com/N1MBER)
+- [Add base files for new lib](https://github.com/gazprom-neft/analytic-ui/commit/8773d76064a42adfefb46c4b1e5fbe2c12098213) - [@N1MBER](https://github.com/N1MBER)
+- [Initial commit](https://github.com/gazprom-neft/analytic-ui/commit/dfe694ab253f3408e76b0c9bc23a95fcef8c33a9) - [@gizeasy](https://github.com/gizeasy)
