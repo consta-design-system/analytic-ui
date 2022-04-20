@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import { Informer } from '@consta/uikit/Informer'
-import { Text } from '@consta/uikit/Text'
+import { Informer } from '@consta/uikit/Informer';
+import { Text } from '@consta/uikit/Text';
 
-import { cn } from '@/__private__/storybook/bem'
+import { cn } from '@/__private__/storybook/bem';
 
-import './RemadeInfo.css'
+import './RemadeInfo.css';
 
-const cnRemadeInfo = cn('RemadeInfo')
+const cnRemadeInfo = cn('RemadeInfo');
 
-export const RemadeInfo: React.FC<{ apiUrl: string; commponentName: string }> = props => {
-  const { commponentName, apiUrl } = props
+export const RemadeInfo: React.FC<{ apiUrl: string; commponentName: string }> = (props) => {
+  const { commponentName, apiUrl } = props;
   return (
     <Informer className={cnRemadeInfo()} status="system" view="bordered">
       <Text>
@@ -33,7 +33,7 @@ export const RemadeInfo: React.FC<{ apiUrl: string; commponentName: string }> = 
           className={cnRemadeInfo('Link')}
           as="a"
           view="link"
-          href="https://consta.gazprom-neft.ru"
+          href="https://consta.consta.design"
           target="_blank"
         >
           дизайн-системы Consta
@@ -48,11 +48,11 @@ export const RemadeInfo: React.FC<{ apiUrl: string; commponentName: string }> = 
         .
       </Text>
     </Informer>
-  )
-}
+  );
+};
 
-export const RemadeTableInfo: React.FC<{ apiUrl: string }> = props => {
-  const { apiUrl } = props
+export const RemadeTableInfo: React.FC<{ apiUrl: string }> = (props) => {
+  const { apiUrl } = props;
   return (
     <Informer className={cnRemadeInfo()} status="system" view="bordered">
       <Text>
@@ -62,5 +62,5 @@ export const RemadeTableInfo: React.FC<{ apiUrl: string }> = props => {
         </Text>
       </Text>
     </Informer>
-  )
-}
+  );
+};
