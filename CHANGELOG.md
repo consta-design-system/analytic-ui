@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.2.2 (28/04/2022)
+- [chore(deploy): update config](https://github.com/consta-design-system/analytic-ui/commit/294ebd30eefa220b2e4168f5138d3e8b59e9e4c3) - [@gizeasy](https://github.com/gizeasy)
+
+--------------------
+
 ## v0.2.1 (20/04/2022)
 - [docs(global): replace url (#11)](https://github.com/consta-design-system/analytic-ui/commit/f85f702c2e7589b26032df97b5679bca56ae7856) - [@arhayka](https://github.com/arhayka)
 - [docs: change links to vercel (#10)](https://github.com/consta-design-system/analytic-ui/commit/9e16b62e4da1934f15d66db58d3f137751f413b2) - [@arhayka](https://github.com/arhayka)
