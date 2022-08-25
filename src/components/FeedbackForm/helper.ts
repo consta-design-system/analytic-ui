@@ -2,7 +2,8 @@ import React from 'react';
 
 export const feedbackFormPropType = ['NPS', 'CSI', 'combo'] as const;
 export type FeedbackFormPropType = typeof feedbackFormPropType[number];
-export const defaultFeedbackFormPropType: FeedbackFormPropType = feedbackFormPropType[0];
+export const defaultFeedbackFormPropType: FeedbackFormPropType =
+  feedbackFormPropType[0];
 
 type FeedbackFormResult = {
   CSI?: number;

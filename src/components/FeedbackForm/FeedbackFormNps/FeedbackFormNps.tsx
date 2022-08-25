@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import './FeedbackFormNps.css';
 
 import { PropOnChange } from '@consta/uikit/__internal__/src/components/SliderCanary/helper';
 import { Button } from '@consta/uikit/Button';
 import { Slider } from '@consta/uikit/SliderCanary';
 import { Text } from '@consta/uikit/Text';
+import React, { useState } from 'react';
 
 import { cn } from '../../../utils/bem';
-
-import './FeedbackFormNps.css';
 
 type ChangeEventType =
   | React.MouseEvent
@@ -45,14 +44,18 @@ export const FeedbackFormNps = (props: Props) => {
         {label}
       </Text>
       {!isMobile ? (
-        <div className={cnFeedbackFormNps('Rating')} onMouseLeave={() => setFocusedItemId(-1)}>
+        <div
+          className={cnFeedbackFormNps('Rating')}
+          onMouseLeave={() => setFocusedItemId(-1)}
+        >
           {buttons.map((id) => (
             <Button
               key={cnFeedbackFormNps('Rating', { id })}
               size="xs"
               className={cnFeedbackFormNps('Rating-Button')}
               view={
-                id <= focusedItemId || (typeof value === 'number' && id <= value)
+                id <= focusedItemId ||
+                (typeof value === 'number' && id <= value)
                   ? 'primary'
                   : 'ghost'
               }
