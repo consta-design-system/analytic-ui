@@ -1,9 +1,12 @@
 import { createStand } from '##/stand/standConfig';
 
+import image from './FeedbackForm.image.svg';
+
 export default createStand({
   title: 'FeedbackForm',
   id: 'FeedbackForm',
   group: 'components',
+  image,
   description: 'Виджет обратной связи.',
   version: '0.2.2',
   status: 'stable',
