@@ -10,11 +10,11 @@ const groups = [
 ] as const;
 
 export const { createStand } = createConfig({
-  title: 'Consta analytic-ui',
+  title: 'Consta Analytic UI',
   id: 'analytic-ui',
   groups,
   group: 'Библиотеки компонентов',
   image,
   description:
-    '[тут описание что это такое] Ультра топчик библиотеки с пацанскими кнопками и графиками, качай.',
+    'Компоненты для аналитики и обратной связи, входят в дизайн-систему Consta.',
 });
