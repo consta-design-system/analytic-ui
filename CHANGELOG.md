@@ -1,5 +1,20 @@
 # Changelog
 
+## v1.0.0 (29/09/2022)
+Самое важное:
+Выкладываем новый стенд и сборщик.
+
+Добавили песочницу: теперь в ней можно смотреть примеры компонентов.
+
+⚠️ Внимание: эта версия библиотеки работает только вместе с `@consta/uikit` версии `v4.0.1` или выше
+
+---
+
+- [chore(stand): new stand and new builder (#12)](https://github.com/consta-design-system/analytic-ui/commit/3e7aceb3c7f512aa97a7e176561d4fa82bfcbcf5) - [@gizeasy](https://github.com/gizeasy)
+- [chore(stand): add automation publish stand](https://github.com/consta-design-system/analytic-ui/commit/d0e6ab0b5106fd462bd99c75deb56db3406b4184) - [@gizeasy](https://github.com/gizeasy)
+
+--------------------
+
 ## v0.2.2 (28/04/2022)
 - [chore(deploy): update config](https://github.com/consta-design-system/analytic-ui/commit/294ebd30eefa220b2e4168f5138d3e8b59e9e4c3) - [@gizeasy](https://github.com/gizeasy)
 
