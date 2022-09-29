@@ -1,8 +1,8 @@
 import './FeedbackFormNps.css';
 
-import { PropOnChange } from '@consta/uikit/__internal__/src/components/SliderCanary/helper';
+import { PropOnChange } from '@consta/uikit/__internal__/src/components/Slider/helper';
 import { Button } from '@consta/uikit/Button';
-import { Slider } from '@consta/uikit/SliderCanary';
+import { Slider } from '@consta/uikit/Slider';
 import { Text } from '@consta/uikit/Text';
 import React, { useState } from 'react';
 
