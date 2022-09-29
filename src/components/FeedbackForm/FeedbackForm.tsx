@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import './FeedbackForm.css';
 
-import { useFlag } from '@consta/uikit/useFlag';
 import { Button } from '@consta/uikit/Button';
 import { IconCheck } from '@consta/uikit/IconCheck';
 import { IconClose } from '@consta/uikit/IconClose';
@@ -8,13 +7,13 @@ import { Modal } from '@consta/uikit/Modal';
 import { Text } from '@consta/uikit/Text';
 import { TextField } from '@consta/uikit/TextField';
 import { useTheme } from '@consta/uikit/Theme';
+import { useFlag } from '@consta/uikit/useFlag';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { cn } from '../../utils/bem';
-
-import { defaultFeedbackFormPropType, FeedbackFormProps } from './helper';
-import './FeedbackForm.css';
 import { FeedbackFormCsi } from './FeedbackFormCsi/FeedbackFormCsi';
 import { FeedbackFormNps } from './FeedbackFormNps/FeedbackFormNps';
+import { defaultFeedbackFormPropType, FeedbackFormProps } from './helper';
 
 const cnFeedbackForm = cn('FeedbackForm');
 
@@ -62,7 +61,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
       data: {
         NPS: npsValue,
         CSI: csiValue,
-        question: !!questionAnswer ? questionAnswer : '',
+        question: questionAnswer || '',
       },
     });
     setView('message');
@@ -86,102 +85,108 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
         setButtonIsDisabled(typeof npsValue !== 'number');
         break;
       case 'combo':
-        setButtonIsDisabled(typeof csiValue !== 'number' || typeof npsValue !== 'number');
+        setButtonIsDisabled(
+          typeof csiValue !== 'number' || typeof npsValue !== 'number',
+        );
         break;
     }
   }, [type, csiValue, npsValue]);
 
   return (
-    <>
-      <Modal
-        className={cnFeedbackForm('Modal', [themeClassNames.color.invert])}
-        isOpen={isOpen}
-        hasOverlay={false}
-        onEsc={onClose}
-        key="modal"
+    <Modal
+      className={cnFeedbackForm('Modal', [themeClassNames.color.invert])}
+      isOpen={isOpen}
+      hasOverlay={false}
+      onEsc={onClose}
+      key="modal"
+    >
+      <div
+        className={cnFeedbackForm('Container', {
+          view: type === 'CSI' && !withOpenQuestion ? 'center' : 'default',
+        })}
+        ref={formRef}
+        {...otherProps}
       >
-        <div
-          className={cnFeedbackForm('Container', {
-            view: type === 'CSI' && !withOpenQuestion ? 'center' : 'default',
-          })}
-          ref={formRef}
-          {...otherProps}
-        >
-          <Button
-            className={cnFeedbackForm('CloseButton')}
-            iconLeft={IconClose}
-            size={isMobile ? 'xs' : 's'}
-            iconSize="s"
-            onClick={onClose}
-            form="round"
-            view="clear"
-          />
-          {view === 'form' ? (
-            <>
-              <Text lineHeight="xs" size={isMobile ? 'xl' : '2xl'} weight="semibold">
-                {title}
-              </Text>
-              {(type === 'CSI' || type === 'combo') && (
-                <FeedbackFormCsi
-                  label={csiTitle}
-                  value={csiValue}
-                  required
-                  isMobile={isMobile}
-                  requiredText="Это обязательное поле"
-                  view={
-                    type !== 'CSI' || (withOpenQuestion && type === 'CSI') ? 'default' : 'clear'
-                  }
-                  onChange={({ e, value }) => onCsiClick(e, value)}
-                />
-              )}
-              {(type === 'NPS' || type === 'combo') && (
-                <FeedbackFormNps
-                  label="Какова вероятность, что вы это кому-нибудь посоветуете?"
-                  value={npsValue}
-                  isMobile={isMobile}
-                  onChange={({ value }) => setNpxValue(value)}
-                />
-              )}
-              {withOpenQuestion && (
-                <TextField
-                  placeholder="Ваш текст"
-                  type="textarea"
-                  width="full"
-                  label={openQuestionTitle}
-                  rows={4}
-                  size={isMobile ? 'xs' : 's'}
-                  value={questionAnswer}
-                  className={cnFeedbackForm('Textarea')}
-                  onChange={({ value }) => setQuestionAnswer(value)}
-                />
-              )}
-              {(type !== 'CSI' || (withOpenQuestion && type === 'CSI')) && (
-                <Button
-                  label="Отправить оценку"
-                  onClick={handleSubmitClick}
-                  width="full"
-                  size="m"
-                  disabled={buttonIsDisabled}
-                />
-              )}
-            </>
-          ) : (
-            <>
-              <Text size="2xl" weight="semibold" lineHeight="xs">
-                Спасибо!
-              </Text>
-              <Text
-                size="s"
-                lineHeight="s"
-                view="secondary"
-                className={cnFeedbackForm('SubmitMessage')}
-              >
-                Ваш отзыв отправлен <IconCheck size="xs" />
-              </Text>
-            </>
-          )}
-        </div>
-      </Modal>
-    </>
+        <Button
+          className={cnFeedbackForm('CloseButton')}
+          iconLeft={IconClose}
+          size={isMobile ? 'xs' : 's'}
+          iconSize="s"
+          onClick={onClose}
+          form="round"
+          view="clear"
+        />
+        {view === 'form' ? (
+          <>
+            <Text
+              lineHeight="xs"
+              size={isMobile ? 'xl' : '2xl'}
+              weight="semibold"
+            >
+              {title}
+            </Text>
+            {(type === 'CSI' || type === 'combo') && (
+              <FeedbackFormCsi
+                label={csiTitle}
+                value={csiValue}
+                required
+                isMobile={isMobile}
+                requiredText="Это обязательное поле"
+                view={
+                  type !== 'CSI' || (withOpenQuestion && type === 'CSI')
+                    ? 'default'
+                    : 'clear'
+                }
+                onChange={({ e, value }) => onCsiClick(e, value)}
+              />
+            )}
+            {(type === 'NPS' || type === 'combo') && (
+              <FeedbackFormNps
+                label="Какова вероятность, что вы это кому-нибудь посоветуете?"
+                value={npsValue}
+                isMobile={isMobile}
+                onChange={({ value }) => setNpxValue(value)}
+              />
+            )}
+            {withOpenQuestion && (
+              <TextField
+                placeholder="Ваш текст"
+                type="textarea"
+                width="full"
+                label={openQuestionTitle}
+                rows={4}
+                size={isMobile ? 'xs' : 's'}
+                value={questionAnswer}
+                className={cnFeedbackForm('Textarea')}
+                onChange={({ value }) => setQuestionAnswer(value)}
+              />
+            )}
+            {(type !== 'CSI' || (withOpenQuestion && type === 'CSI')) && (
+              <Button
+                label="Отправить оценку"
+                onClick={handleSubmitClick}
+                width="full"
+                size="m"
+                disabled={buttonIsDisabled}
+              />
+            )}
+          </>
+        ) : (
+          <>
+            <Text size="2xl" weight="semibold" lineHeight="xs">
+              Спасибо!
+            </Text>
+            <Text
+              size="s"
+              lineHeight="s"
+              view="secondary"
+              className={cnFeedbackForm('SubmitMessage')}
+            >
+              Ваш отзыв отправлен <IconCheck size="xs" />
+            </Text>
+          </>
+        )}
+      </div>
+    </Modal>
   );
 };
