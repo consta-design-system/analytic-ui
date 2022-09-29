@@ -1,6 +1,6 @@
 {
   "name": "@consta/analytic-ui",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "scripts": {
     "postinstall": "husky install",
     "tsc-dry-run": "tsc --noEmit",
