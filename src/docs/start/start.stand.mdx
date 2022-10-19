@@ -1,0 +1,38 @@
+## Установите пакет и зависимости
+
+`yarn add @consta/uikit @consta/analytic-ui`
+
+или
+
+`npm install @consta/uikit @consta/analytic-ui`
+
+## Подключите тему
+
+Тему обязательно нужно подключать в корне приложения, так, чтобы все компоненты были вложены в [компонент `Theme`](##LIBS.LIB.STAND/lib:uikit/stand:components-theme-stable).
+
+## Можно использовать компоненты
+
+Например, так:
+
+```js
+import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
+import { FeedbackForm } from '@consta/FeedbackForm';
+import { Button } from '@consta/Button';
+
+export const FeedbackFormExampleTypeNps = () => {
+  const [isOpen, setIsOpen] = useState < boolean > false;
+  return (
+    <>
+      <FeedbackForm
+        label="Как вам наш модуль по созданию сценариев?"
+        type="NPS"
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
+      <Button label="Открыть виджет" onClick={() => setIsOpen(true)} />
+    </>
+  );
+};
+```
+
+[Подробнее в документации FeedbackForm](##LIBS.LIB.STAND/lib:analytic-ui/stand:components-feedbackform-stable)
