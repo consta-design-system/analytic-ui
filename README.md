@@ -15,7 +15,7 @@ $ yarn add @consta/analytic-ui
 
 ## Подключите зависимости
 
-Чтобы начать работу, установите библиотеку [`@consta/uikit`](https://www.npmjs.com/package/@consta/uikit) и [настройте тему](http://uikit.consta.design/?path=/docs/components-theme--playground).
+Чтобы начать работу, установите библиотеку [`@consta/uikit`](https://www.npmjs.com/package/@consta/uikit) и [настройте тему](https://portal.consta.design/libs/portal/theme-themeabout).
 
 ### Можно использовать компоненты
 
@@ -57,7 +57,7 @@ $ yarn install
 ### Основные команды
 
 ```sh
-# Сборка и старт Storybook
+# Сборка и старт
 $ yarn start
 # Сборка для production
 $ yarn build
@@ -77,7 +77,7 @@ $ yarn test
 
 ## Контрибьюторам
 
-Будем рады, если вы захотите принять участие в разработке дизайн-системы =) Но сначала прочитайте [инструкцию для контрибьюторов](http://uikit.consta.design/libs/uikit/custom-contribute).
+Будем рады, если вы захотите принять участие в разработке дизайн-системы =) Но сначала прочитайте [инструкцию для контрибьюторов](http://portal.consta.design/libs/portal/custom-contribute).
 
 ## Лицензия
 
