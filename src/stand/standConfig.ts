@@ -18,8 +18,9 @@ export const { createStand } = createConfig({
       initialOpen: true,
     },
   ],
-  group: 'Библиотеки компонентов',
+  group: 'Отдельные компоненты',
   image,
   description:
     'Компоненты для аналитики и обратной связи, входят в дизайн-систему Consta.',
+  repositoryUrl: 'https://github.com/consta-design-system/analytic-ui',
 });
