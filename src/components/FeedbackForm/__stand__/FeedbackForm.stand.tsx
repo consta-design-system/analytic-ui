@@ -6,6 +6,7 @@ export default createStand({
   group: 'components',
   description: 'Виджет обратной связи.',
   version: '0.2.2',
+  alias: ['csi', 'nps', 'отзыв', 'аналитика', 'обратная связь'],
   status: 'stable',
   sandbox: 'feedbackform-5jjted',
   figma:
