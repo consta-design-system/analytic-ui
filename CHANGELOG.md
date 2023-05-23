@@ -1,5 +1,20 @@
 # Changelog
 
+## v1.0.1 (23/05/2023)
+Запускать локальный сервер разработки и сборку пакетов теперь можно и на ОС Windows.
+
+---
+
+- [chore: configure build for windows (#22)](https://github.com/consta-design-system/analytic-ui/commit/492865a0db562cac1b1b1a2296b689ba0e276e00) - [@gizeasy](https://github.com/gizeasy)
+- [docs: edit stand group](https://github.com/consta-design-system/analytic-ui/commit/5831bc01856a80c9faf13ad9e74de2ba4864dffd) - [@gizeasy](https://github.com/gizeasy)
+- [docs(FeedbackForm): add aliases (#21)](https://github.com/consta-design-system/analytic-ui/commit/e8ab074952541323c41eff65e54acdc5fd67a572) - [@N1MBER](https://github.com/N1MBER)
+- [docs(portal): readme, version, stand (#20)](https://github.com/consta-design-system/analytic-ui/commit/430d599177b2e330eae3fd97e37fe42cd7defeaa) - [@arhayka](https://github.com/arhayka)
+- [docs: start, readme, menu (#18)](https://github.com/consta-design-system/analytic-ui/commit/a34d3fff26f1eb43543f0fde5159eea88462cb10) - [@arhayka](https://github.com/arhayka)
+- [docs(Sandbox): add sandbox for Feedback form (#19)](https://github.com/consta-design-system/analytic-ui/commit/42094577708cee0958d179a6cd82c930a1e02203) - [@N1MBER](https://github.com/N1MBER)
+- [chore(deps): update @consta/stand](https://github.com/consta-design-system/analytic-ui/commit/9b88ba89d569cd964558bdf01145d31b2c33b285) - [@gizeasy](https://github.com/gizeasy)
+
+--------------------
+
 ## v1.0.0 (29/09/2022)
 Самое важное:
 Выкладываем новый стенд и сборщик.
