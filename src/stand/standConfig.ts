@@ -23,4 +23,6 @@ export const { createStand } = createConfig({
   description:
     'Компоненты для аналитики и обратной связи, входят в дизайн-систему Consta.',
   repositoryUrl: 'https://github.com/consta-design-system/analytic-ui',
+  figmaUrl:
+    'https://www.figma.com/file/LKYyjgQ3khFHvXraZAG1n1/Consta-Components?type=design&node-id=0-1&t=h5q4xoKa2C1fSb91-0',
 });
