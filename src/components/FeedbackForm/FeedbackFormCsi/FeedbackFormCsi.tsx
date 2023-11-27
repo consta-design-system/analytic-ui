@@ -1,14 +1,14 @@
 import './FeedbackFormCsi.css';
 
-import { IconFavorite } from '@consta/uikit/IconFavorite';
+import { IconFavoriteFilled } from '@consta/icons/IconFavoriteFilled';
 import { Text } from '@consta/uikit/Text';
 import React, { useState } from 'react';
 
-import { cn } from '../../../utils/bem';
+import { cn } from '##/utils/bem';
 
 type Props = {
   label?: string;
-  onChange: (prop: { e: React.MouseEvent; value: number }) => void;
+  onChange: (value: number, prop: { e: React.MouseEvent }) => void;
   value?: number;
   required?: boolean;
   requiredText?: string;
@@ -63,9 +63,9 @@ export const FeedbackFormCsi = (props: Props) => {
                 (typeof value === 'number' && id <= value),
             })}
             onMouseEnter={() => setFocusedItemId(id)}
-            onClick={(e) => onChange?.({ e, value: id })}
+            onClick={(e) => onChange?.(id, { e })}
           >
-            <IconFavorite />
+            <IconFavoriteFilled className={cnFeedbackFormCsi('Icon')} />
           </button>
         ))}
       </div>

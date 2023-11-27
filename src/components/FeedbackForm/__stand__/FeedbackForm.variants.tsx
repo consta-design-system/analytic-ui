@@ -1,6 +1,7 @@
 import { useBoolean, useSelect, useText } from '@consta/stand';
 import { Button } from '@consta/uikit/Button';
-import React, { useState } from 'react';
+import { useFlag } from '@consta/uikit/useFlag';
+import React from 'react';
 
 import { FeedbackForm } from '../FeedbackForm';
 import { defaultFeedbackFormPropType, feedbackFormPropType } from '../helper';
@@ -19,7 +20,7 @@ const Variants = () => {
     'Расскажите, что нам стоит добавить или изменить',
   );
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useFlag();
 
   return (
     <>
@@ -28,12 +29,12 @@ const Variants = () => {
         type={type}
         isOpen={isOpen}
         csiTitle={csiTitle}
-        onClose={() => setIsOpen(false)}
+        onClose={setIsOpen.off}
         withOpenQuestion={withOpenQuestion}
         openQuestionTitle={openQuestionTitle}
-        key="FeedbackForm"
+        key={`F${type}`}
       />
-      <Button label="Открыть виджет" onClick={() => setIsOpen(true)} />
+      <Button label="Открыть виджет" onClick={setIsOpen.on} />
     </>
   );
 };

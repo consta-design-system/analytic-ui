@@ -1,12 +1,11 @@
 import './FeedbackFormNps.css';
 
-import { PropOnChange } from '@consta/uikit/__internal__/src/components/Slider/helper';
 import { Button } from '@consta/uikit/Button';
 import { Slider } from '@consta/uikit/Slider';
 import { Text } from '@consta/uikit/Text';
 import React, { useState } from 'react';
 
-import { cn } from '../../../utils/bem';
+import { cn } from '##/utils/bem';
 
 type ChangeEventType =
   | React.MouseEvent
@@ -16,7 +15,7 @@ type ChangeEventType =
   | Event;
 
 type Props = {
-  onChange?: (props: { e?: ChangeEventType; value: number }) => void;
+  onChange?: (value: number, props: { e?: ChangeEventType }) => void;
   value?: number;
   label?: string;
   isMobile?: boolean;
@@ -30,15 +29,12 @@ export const FeedbackFormNps = (props: Props) => {
   const { onChange, value, label, isMobile = false, ...otherProps } = props;
   const [focusedItemId, setFocusedItemId] = useState<number>(-1);
 
-  const handleSliderChange: PropOnChange<false> = (event) => {
-    onChange?.({ e: event.e, value: event.value as number });
-  };
-
   return (
     <div className={cnFeedbackFormNps()} {...otherProps}>
       <Text
         size={isMobile ? 'xs' : 's'}
         lineHeight={isMobile ? 'xs' : 's'}
+        view="primary"
         className={cnFeedbackFormNps('Label')}
       >
         {label}
@@ -61,7 +57,7 @@ export const FeedbackFormNps = (props: Props) => {
               }
               onMouseEnter={() => setFocusedItemId(id)}
               label={id}
-              onClick={(e) => onChange?.({ e, value: id })}
+              onClick={(e) => onChange?.(id, { e })}
             />
           ))}
         </div>
@@ -69,7 +65,7 @@ export const FeedbackFormNps = (props: Props) => {
         <Slider
           value={value || 0}
           className={cnFeedbackFormNps('Rating')}
-          onChange={handleSliderChange}
+          onChange={onChange}
           step={1}
           withTooltip
           min={0}

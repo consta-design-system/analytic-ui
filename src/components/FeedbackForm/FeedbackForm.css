@@ -1,87 +1,53 @@
+.Modal-Window.aui--FeedbackForm {
+  max-width: var(--feedbackform-modal-width);
+  min-height: var(--feedbackform-modal-height);
+}
+
 .aui--FeedbackForm {
+  --feedbackform-modal-width: 288px;
+  --feedbackform-modal-height: 120px;
+  --feedbackform-container-padding:
+    var(--space-2xl) var(--space-m)
+    var(--space-m) var(--space-m);
+  --feedbackform-slot-gap: var(--space-m);
+  --feedbackform-close-button-offset: var(--space-xs);
   position: relative;
+  pointer-events: auto;
 
-  &-Modal {
-    max-width: 451px;
-    min-height: 160px;
-    pointer-events: auto;
-
-    @media screen and (max-width: 480px) {
-      min-height: 120px;
-
-      &.Modal-Window {
-        min-width: 288px;
-      }
-    }
+  &_isDesktop {
+    --feedbackform-modal-width: 450px;
+    --feedbackform-modal-height: 160px;
+    --feedbackform-container-padding:
+      var(--space-4xl) var(--space-2xl)
+      var(--space-2xl) var(--space-2xl);
+    --feedbackform-slot-gap: var(--space-xl);
+    --feedbackform-close-button-offset: var(--space-s);
   }
 
   &-Container {
     position: relative;
-    padding-top: var(--space-4xl);
-    padding-right: var(--space-2xl);
-    padding-left: var(--space-2xl);
-    padding-bottom: var(--space-2xl);
+    padding: var(--feedbackform-container-padding);
     background-color: var(--color-bg-default);
 
-    @media screen and (max-width: 480px) {
-      padding-top: var(--space-2xl);
-      padding-right: var(--space-m);
-      padding-left: var(--space-m);
-      padding-bottom: var(--space-2xl);
-
-      &_view_default,
-      &_view_center {
-        & > *:last-child:not(:nth-child(3)) {
-          margin-top: var(--space-xs);
-        }
+    &_view {
+      &_center {
+        text-align: center;
       }
     }
 
-    &_view {
-      &_default {
-        text-align: left;
-
-        & > *:not(:last-child):not(:first-child) {
-          margin-bottom: var(--space-xl);
-
-          @media screen and (max-width: 480px) {
-            margin-bottom: var(--space-m);
-          }
-        }
-      }
-
-      &_center {
-        text-align: center;
-
-        & > *:not(:last-child):not(:first-child) {
-          margin-bottom: var(--space-m);
-
-          @media screen and (max-width: 480px) {
-            margin-bottom: var(--space-m);
-          }
-        }
-      }
+    & > *:not(:last-child):not(:first-child) {
+      margin-bottom: var(--feedbackform-slot-gap);
     }
   }
 
   &-SubmitMessage {
     margin-bottom: var(--space-m);
-
-    @media screen and (max-width: 480px) {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
   }
 
   &-CloseButton {
     position: absolute;
-    top: var(--space-s);
-    right: var(--space-s);
-
-    @media screen and (max-width: 480px) {
-      top: var(--space-xs);
-      right: var(--space-xs);
-    }
+    top: var(--feedbackform-close-button-offset);
+    right: var(--feedbackform-close-button-offset);
   }
 
   &-Textarea {
@@ -95,8 +61,4 @@
       line-height: var(--line-height-text-m);
     }
   }
-}
-
-.Modal {
-  pointer-events: none;
 }
