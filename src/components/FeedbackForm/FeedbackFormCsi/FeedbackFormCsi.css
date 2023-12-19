@@ -16,20 +16,20 @@
     &-Button {
       margin: 0;
       padding: 0;
+      color: var(--color-typo-ghost);
       background: none;
       border: none;
       cursor: pointer;
 
-      & .Icon {
-        width: var(--space-3xl);
-        height: var(--space-3xl);
-        color: var(--color-typo-ghost);
-        transition: color 0.3s;
-      }
-
-      &_active .Icon {
+      &_active {
         color: var(--color-bg-caution);
       }
+    }
+
+    &-Icon {
+      width: var(--space-3xl);
+      height: var(--space-3xl);
+      transition: color 0.3s;
     }
   }
 }

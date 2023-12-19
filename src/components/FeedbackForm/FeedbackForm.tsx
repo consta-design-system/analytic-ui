@@ -1,16 +1,17 @@
 import './FeedbackForm.css';
 
+import { IconCheck } from '@consta/icons/IconCheck';
+import { IconClose } from '@consta/icons/IconClose';
 import { Button } from '@consta/uikit/Button';
-import { IconCheck } from '@consta/uikit/IconCheck';
-import { IconClose } from '@consta/uikit/IconClose';
 import { Modal } from '@consta/uikit/Modal';
 import { Text } from '@consta/uikit/Text';
 import { TextField } from '@consta/uikit/TextField';
 import { useTheme } from '@consta/uikit/Theme';
-import { useFlag } from '@consta/uikit/useFlag';
+import { useBreakpoints } from '@consta/uikit/useBreakpoints';
 import React, { useEffect, useRef, useState } from 'react';
 
-import { cn } from '../../utils/bem';
+import { cn } from '##/utils/bem';
+
 import { FeedbackFormCsi } from './FeedbackFormCsi/FeedbackFormCsi';
 import { FeedbackFormNps } from './FeedbackFormNps/FeedbackFormNps';
 import { defaultFeedbackFormPropType, FeedbackFormProps } from './helper';
@@ -36,42 +37,35 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
   const [questionAnswer, setQuestionAnswer] = useState<string | null>(null);
   const [buttonIsDisabled, setButtonIsDisabled] = useState<boolean>(true);
   const [view, setView] = useState<ViewType>('form');
-  const [isMobile, { on, off }] = useFlag(false);
+
+  const { isDesktop } = useBreakpoints({
+    isActive: true,
+    map: { isDesktop: 480 },
+  });
 
   const formRef = useRef<HTMLDivElement>(null);
 
   const { themeClassNames } = useTheme();
 
-  useEffect(() => {
-    const resize = () => {
-      if (window.innerWidth <= 480) {
-        on();
-      } else {
-        off();
-      }
-    };
-    resize();
-    window.addEventListener('resize', resize);
-    return () => window.removeEventListener('resize', resize);
-  }, []);
-
   const handleSubmitClick = (e: React.MouseEvent) => {
-    onSubmit?.({
-      e,
-      data: {
+    onSubmit?.(
+      {
         NPS: npsValue,
         CSI: csiValue,
         question: questionAnswer || '',
       },
-    });
+      {
+        e,
+      },
+    );
     setView('message');
   };
 
-  const onCsiClick = (e: React.MouseEvent, rating: number) => {
+  const onCsiClick = (rating: number, props: { e: React.MouseEvent }) => {
     if (type !== 'CSI' || (withOpenQuestion && type === 'CSI')) {
       setCsiValue(rating);
     } else {
-      onSubmit?.({ e, data: { CSI: rating } });
+      onSubmit?.({ CSI: rating }, props);
       setView('message');
     }
   };
@@ -94,7 +88,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
 
   return (
     <Modal
-      className={cnFeedbackForm('Modal', [themeClassNames.color.invert])}
+      className={cnFeedbackForm({ isDesktop }, [themeClassNames.color.invert])}
       isOpen={isOpen}
       hasOverlay={false}
       onEsc={onClose}
@@ -110,7 +104,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
         <Button
           className={cnFeedbackForm('CloseButton')}
           iconLeft={IconClose}
-          size={isMobile ? 'xs' : 's'}
+          size={isDesktop ? 's' : 'xs'}
           iconSize="s"
           onClick={onClose}
           form="round"
@@ -120,8 +114,9 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
           <>
             <Text
               lineHeight="xs"
-              size={isMobile ? 'xl' : '2xl'}
+              size={isDesktop ? '2xl' : 'xl'}
               weight="semibold"
+              view="primary"
             >
               {title}
             </Text>
@@ -130,35 +125,34 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
                 label={csiTitle}
                 value={csiValue}
                 required
-                isMobile={isMobile}
+                isMobile={!isDesktop}
                 requiredText="Это обязательное поле"
                 view={
                   type !== 'CSI' || (withOpenQuestion && type === 'CSI')
                     ? 'default'
                     : 'clear'
                 }
-                onChange={({ e, value }) => onCsiClick(e, value)}
+                onChange={onCsiClick}
               />
             )}
             {(type === 'NPS' || type === 'combo') && (
               <FeedbackFormNps
                 label="Какова вероятность, что вы это кому-нибудь посоветуете?"
                 value={npsValue}
-                isMobile={isMobile}
-                onChange={({ value }) => setNpxValue(value)}
+                isMobile={!isDesktop}
+                onChange={setNpxValue}
               />
             )}
             {withOpenQuestion && (
               <TextField
                 placeholder="Ваш текст"
                 type="textarea"
-                width="full"
                 label={openQuestionTitle}
                 rows={4}
-                size={isMobile ? 'xs' : 's'}
+                size={isDesktop ? 's' : 'xs'}
                 value={questionAnswer}
                 className={cnFeedbackForm('Textarea')}
-                onChange={({ value }) => setQuestionAnswer(value)}
+                onChange={setQuestionAnswer}
               />
             )}
             {(type !== 'CSI' || (withOpenQuestion && type === 'CSI')) && (
@@ -173,7 +167,7 @@ export const FeedbackForm = (props: FeedbackFormProps) => {
           </>
         ) : (
           <>
-            <Text size="2xl" weight="semibold" lineHeight="xs">
+            <Text size="2xl" weight="semibold" view="primary" lineHeight="xs">
               Спасибо!
             </Text>
             <Text
